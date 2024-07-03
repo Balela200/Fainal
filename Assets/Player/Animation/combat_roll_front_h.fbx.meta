@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 04daf66a4572e764aa1663c4952c8aed
+guid: 4be4c4a89667b214fa3d7207f43cf960
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -24,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -33,26 +33,26 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: walk_ip_h
-      takeName: walk_ip_h
-      internalID: 8354314571206890670
+      name: combat_roll_front_h
+      takeName: combat_roll_front_g
+      internalID: 7170272734279887403
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -546,7 +546,8 @@ ModelImporter:
     - name: root
       parentName: SK_Mannequin
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0.00000019470724, y: 0.00000019470717, z: -0.000000043711406, w: 1}
+      rotation: {x: 0.00000019470724, y: 0.00000019470717, z: -0.000000043711406,
+        w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: pelvis
       parentName: root
@@ -856,7 +857,8 @@ ModelImporter:
     - name: ik_foot_root
       parentName: root
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0.00000019470724, y: 0.00000019470717, z: -0.000000043711406, w: 1}
+      rotation: {x: 0.00000019470724, y: 0.00000019470717, z: -0.000000043711406,
+        w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ik_foot_l
       parentName: ik_foot_root
@@ -871,7 +873,8 @@ ModelImporter:
     - name: ik_hand_root
       parentName: root
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0.00000019470724, y: 0.00000019470717, z: -0.000000043711406, w: 1}
+      rotation: {x: 0.00000019470724, y: 0.00000019470717, z: -0.000000043711406,
+        w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: ik_hand_gun
       parentName: ik_hand_root
@@ -900,7 +903,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0d29c6183fa74e14c838182037ad2cd9, type: 2}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 0d29c6183fa74e14c838182037ad2cd9,
+    type: 2}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
