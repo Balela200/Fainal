@@ -12,10 +12,19 @@ public class PlayerSystem : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
 
+    public bool canMove = true;
+
+    [Header("Roll")]
+    public float rollSpeed = 10f;
+    public float rollDuration = 0.5f;
+    private bool isRolling = false;
+    private float rollTimer = 0f;
+    private Vector3 rollDirection = Vector3.zero;
+
     [Header("Player System")]
     public Animator anim;
     CharacterController characterController;
-    public Rigidbody rb;
+    //public Rigidbody rb;
 
     public LayerMask layerMask;
 
@@ -38,39 +47,106 @@ public class PlayerSystem : MonoBehaviour
     {
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
-
-        if (characterController.isGrounded)
+        if(canMove)
         {
-
-
-            moveDirection = new Vector3(horizontal, 0, vertical);
-            moveDirection.Normalize();
-
-            // Rotate Player
-            if (moveDirection != Vector3.zero)
+            if (characterController.isGrounded)
             {
-                Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotaionSpeed * Time.deltaTime);
-            }
 
-            if (vertical >= 0.1f || vertical <= -0.1f)
-            {
-                anim.SetBool("Run", true);
-            }
-            else if (horizontal >= 0.1f || horizontal <= -0.1f)
-            {
-                anim.SetBool("Run", true);
-            }
-            else
-            {
-                anim.SetBool("Run", false);
+                moveDirection = new Vector3(horizontal, 0, vertical);
+                moveDirection.Normalize();
+
+                // Rotate Player
+                if (moveDirection != Vector3.zero)
+                {
+                    Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotaionSpeed * Time.deltaTime);
+                }
+
+                // Run
+                if ((vertical >= 0.1f || vertical <= -0.1f) && speed == 10)
+                {
+                    anim.SetBool("Run", true);
+                    anim.SetBool("Walk", false);
+                }
+                else if ((horizontal >= 0.1f || horizontal <= -0.1f) && speed == 10)
+                {
+                    anim.SetBool("Run", true);
+                    anim.SetBool("Walk", false);
+                }
+
+                // Walk
+                else if ((vertical >= 0.1f || vertical <= -0.1f) && speed == 3)
+                {
+                    anim.SetBool("Walk", true);
+                    anim.SetBool("Run", false);
+                }
+                else if ((horizontal >= 0.1f || horizontal <= -0.1f) && speed == 3)
+                {
+                    anim.SetBool("Walk", true);
+                    anim.SetBool("Run", false);
+                }
+
+                // Stop Walk and Run
+                else
+                {
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Walk", false);
+                }
             }
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
 
-        characterController.Move(moveDirection * Time.deltaTime * speed);
+        // Run Walk
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 10;
+            characterController.Move(moveDirection * Time.deltaTime * speed);
+        }
+        else
+        {
+            speed = 3;
+            characterController.Move(moveDirection * Time.deltaTime * speed);
+        }
+
+        // Roll
+        if (!isRolling && Input.GetKeyDown(KeyCode.Space))
+        {
+            StartRoll();
+        }
+    }
+
+    void StartRoll()
+    {
+        isRolling = true;
+        rollTimer = 0f;
+        rollDirection = transform.forward; // Adjust direction as needed
+    }
+
+    void FixedUpdate()
+    {
+        // Roll
+        if (isRolling)
+        {
+            rollTimer += Time.fixedDeltaTime;
+
+            if (rollTimer < rollDuration)
+            {
+                // Apply roll movement
+                anim.SetBool("Roll", true);
+                canMove = false;
+                characterController.Move(rollDirection * rollSpeed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                // End rolling
+                canMove = true;
+                isRolling = false;
+                anim.SetBool("Roll", false);
+            }
+        }
     }
 
     // IK foot
