@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,11 @@ public class AttackOneBehaviours : StateMachineBehaviour
         PlayerSystem.playerSystem.canMove = true;
         PlayerSystem.playerSystem.canRoll = true;
         PlayerSystem.playerSystem.speed = 3;
-        PlayerSystem.playerSystem.attackOneVFX.SetActive(false);
+
+        // Sword
+        PlayerSystem.playerSystem.swordHand.SetActive(false);
+        PlayerSystem.playerSystem.swordBody.SetActive(true);
+        //PlayerSystem.playerSystem.attackOneVFX.SetActive(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

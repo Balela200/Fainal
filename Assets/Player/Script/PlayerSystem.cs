@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,8 +43,12 @@ public class PlayerSystem : MonoBehaviour
     public float timerAttack;
     public GameObject AttackOneBox;
 
-    [Header("VFX")]
-    public GameObject attackOneVFX;
+    //[Header("VFX")]
+    //public GameObject attackOneVFX;
+
+    [Header("Sword")]
+    public GameObject swordHand;
+    public GameObject swordBody;
 
     void Start()
     {
@@ -180,7 +185,7 @@ public class PlayerSystem : MonoBehaviour
     public void AttackInput()
     {
         timerAttack += Time.deltaTime;
-        if(Input.GetMouseButton(0) && timerAttack >= 0.9f && canAttack == true)
+        if(Input.GetMouseButton(0) && timerAttack >= 1.5f && canAttack == true)
         {
             // Move Player = 0
             speed = 0;
@@ -196,7 +201,11 @@ public class PlayerSystem : MonoBehaviour
 
             StartCoroutine(AttackOne());
 
-            attackOneVFX.SetActive(true);
+            //attackOneVFX.SetActive(true);
+
+            // Sword
+            swordHand.SetActive(true);
+            swordBody.SetActive(false);
         }
     }
 
