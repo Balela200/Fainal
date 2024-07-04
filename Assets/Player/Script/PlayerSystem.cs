@@ -5,25 +5,50 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerSystem : MonoBehaviour
 {
+    public static PlayerSystem playerSystem;
     [Header("Player Movement")]
+    private float vertical, horizontal;
     public float speed;
     public float rotaionSpeed;
     public float gravity = 9.18f;
 
     private Vector3 moveDirection = Vector3.zero;
 
+    public bool canMove = true;
+
+    [Header("Roll")]
+    public float rollSpeed = 10f;
+    public float rollDuration = 0.5f;
+    private bool isRolling = false;
+    private float rollTimer = 0f;
+    private Vector3 rollDirection = Vector3.zero;
+
+    public bool canRoll = true;
+    public float canRollTimer;
+
     [Header("Player System")]
     public Animator anim;
     CharacterController characterController;
-    public Rigidbody rb;
 
     public LayerMask layerMask;
 
+    [Header("Animation")]
     // IK
     [Range(0f, 1f)]
     public float DistanceToGround;
+
+    [Header("Attack")]
+    public bool canAttack = true;
+    public float timerAttack;
+    public GameObject AttackOneBox;
+
+    [Header("VFX")]
+    public GameObject attackOneVFX;
+
     void Start()
     {
+        playerSystem = this;
+
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
@@ -32,45 +57,155 @@ public class PlayerSystem : MonoBehaviour
     void Update()
     {
         Movement(); // Player Movement
+        AttackInput();
     }
 
     public void Movement()
     {
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
 
-        if (characterController.isGrounded)
+        if(canMove)
         {
-
-
-            moveDirection = new Vector3(horizontal, 0, vertical);
-            moveDirection.Normalize();
-
-            // Rotate Player
-            if (moveDirection != Vector3.zero)
+            if (characterController.isGrounded)
             {
-                Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotaionSpeed * Time.deltaTime);
-            }
 
-            if (vertical >= 0.1f || vertical <= -0.1f)
-            {
-                anim.SetBool("Run", true);
-            }
-            else if (horizontal >= 0.1f || horizontal <= -0.1f)
-            {
-                anim.SetBool("Run", true);
-            }
-            else
-            {
-                anim.SetBool("Run", false);
+                moveDirection = new Vector3(horizontal, 0, vertical);
+                moveDirection.Normalize();
+
+                // Rotate Player
+                if (moveDirection != Vector3.zero)
+                {
+                    Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotaionSpeed * Time.deltaTime);
+                }
+
+                // Run
+                if ((vertical >= 0.1f || vertical <= -0.1f) && speed == 10)
+                {
+                    anim.SetBool("Run", true);
+                    anim.SetBool("Walk", false);
+                }
+                else if ((horizontal >= 0.1f || horizontal <= -0.1f) && speed == 10)
+                {
+                    anim.SetBool("Run", true);
+                    anim.SetBool("Walk", false);
+                }
+
+                // Walk
+                else if ((vertical >= 0.1f || vertical <= -0.1f) && speed == 3)
+                {
+                    anim.SetBool("Walk", true);
+                    anim.SetBool("Run", false);
+                }
+                else if ((horizontal >= 0.1f || horizontal <= -0.1f) && speed == 3)
+                {
+                    anim.SetBool("Walk", true);
+                    anim.SetBool("Run", false);
+                }
+
+                // Stop Walk and Run
+                else
+                {
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Walk", false);
+                }
             }
         }
 
+
         moveDirection.y -= gravity * Time.deltaTime;
 
-        characterController.Move(moveDirection * Time.deltaTime * speed);
+        // Run Walk
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 10;
+            characterController.Move(moveDirection * Time.deltaTime * speed);
+        }
+        else
+        {
+            speed = 3;
+            characterController.Move(moveDirection * Time.deltaTime * speed);
+        }
+
+
+        canRollTimer += Time.deltaTime;
+        // Roll
+        if (!isRolling && Input.GetKeyDown(KeyCode.Space) && canRoll == true && canRollTimer >= 1.5f)
+        {
+            canRollTimer = 0;
+            StartRoll();
+        }
+    }
+
+    void StartRoll()
+    {
+        isRolling = true;
+        rollTimer = 0f;
+        rollDirection = transform.forward; // Adjust direction as needed
+    }
+
+    void FixedUpdate()
+    {
+        // Roll
+        if (isRolling)
+        {
+            rollTimer += Time.fixedDeltaTime;
+
+            if (rollTimer < rollDuration)
+            {
+                // Apply roll movement
+                anim.SetBool("Roll", true);
+                canMove = false;
+                characterController.Move(rollDirection * rollSpeed * Time.fixedDeltaTime);
+
+                // Attack
+                canAttack = false;
+            }
+            else
+            {
+                // End rolling
+                canMove = true;
+                isRolling = false;
+                anim.SetBool("Roll", false);
+
+                // Attack
+                canAttack = true;
+            }
+        }
+    }
+
+    public void AttackInput()
+    {
+        timerAttack += Time.deltaTime;
+        if(Input.GetMouseButton(0) && timerAttack >= 0.9f && canAttack == true)
+        {
+            // Move Player = 0
+            speed = 0;
+            characterController.Move(moveDirection * Time.deltaTime * speed);
+            moveDirection = new Vector3(0, 0, 0);
+
+            timerAttack = 0f;
+
+            canMove = false;
+            canRoll = false;
+
+            anim.SetTrigger("Attack");
+
+            StartCoroutine(AttackOne());
+
+            attackOneVFX.SetActive(true);
+        }
+    }
+
+
+    IEnumerator AttackOne()
+    {
+        AttackOneBox.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        AttackOneBox.SetActive(false);
     }
 
     // IK foot
