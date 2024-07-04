@@ -5,7 +5,9 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerSystem : MonoBehaviour
 {
+    public static PlayerSystem playerSystem;
     [Header("Player Movement")]
+    private float vertical, horizontal;
     public float speed;
     public float rotaionSpeed;
     public float gravity = 9.18f;
@@ -21,18 +23,32 @@ public class PlayerSystem : MonoBehaviour
     private float rollTimer = 0f;
     private Vector3 rollDirection = Vector3.zero;
 
+    public bool canRoll = true;
+    public float canRollTimer;
+
     [Header("Player System")]
     public Animator anim;
     CharacterController characterController;
-    //public Rigidbody rb;
 
     public LayerMask layerMask;
 
+    [Header("Animation")]
     // IK
     [Range(0f, 1f)]
     public float DistanceToGround;
+
+    [Header("Attack")]
+    public bool canAttack = true;
+    public float timerAttack;
+    public GameObject AttackOneBox;
+
+    [Header("VFX")]
+    public GameObject attackOneVFX;
+
     void Start()
     {
+        playerSystem = this;
+
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
     }
@@ -41,12 +57,14 @@ public class PlayerSystem : MonoBehaviour
     void Update()
     {
         Movement(); // Player Movement
+        AttackInput();
     }
 
     public void Movement()
     {
-        float vertical = Input.GetAxis("Vertical");
-        float horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+
         if(canMove)
         {
             if (characterController.isGrounded)
@@ -97,10 +115,11 @@ public class PlayerSystem : MonoBehaviour
             }
         }
 
+
         moveDirection.y -= gravity * Time.deltaTime;
 
         // Run Walk
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = 10;
             characterController.Move(moveDirection * Time.deltaTime * speed);
@@ -111,9 +130,12 @@ public class PlayerSystem : MonoBehaviour
             characterController.Move(moveDirection * Time.deltaTime * speed);
         }
 
+
+        canRollTimer += Time.deltaTime;
         // Roll
-        if (!isRolling && Input.GetKeyDown(KeyCode.Space))
+        if (!isRolling && Input.GetKeyDown(KeyCode.Space) && canRoll == true && canRollTimer >= 1.5f)
         {
+            canRollTimer = 0;
             StartRoll();
         }
     }
@@ -138,6 +160,9 @@ public class PlayerSystem : MonoBehaviour
                 anim.SetBool("Roll", true);
                 canMove = false;
                 characterController.Move(rollDirection * rollSpeed * Time.fixedDeltaTime);
+
+                // Attack
+                canAttack = false;
             }
             else
             {
@@ -145,8 +170,42 @@ public class PlayerSystem : MonoBehaviour
                 canMove = true;
                 isRolling = false;
                 anim.SetBool("Roll", false);
+
+                // Attack
+                canAttack = true;
             }
         }
+    }
+
+    public void AttackInput()
+    {
+        timerAttack += Time.deltaTime;
+        if(Input.GetMouseButton(0) && timerAttack >= 0.9f && canAttack == true)
+        {
+            // Move Player = 0
+            speed = 0;
+            characterController.Move(moveDirection * Time.deltaTime * speed);
+            moveDirection = new Vector3(0, 0, 0);
+
+            timerAttack = 0f;
+
+            canMove = false;
+            canRoll = false;
+
+            anim.SetTrigger("Attack");
+
+            StartCoroutine(AttackOne());
+
+            attackOneVFX.SetActive(true);
+        }
+    }
+
+
+    IEnumerator AttackOne()
+    {
+        AttackOneBox.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        AttackOneBox.SetActive(false);
     }
 
     // IK foot
