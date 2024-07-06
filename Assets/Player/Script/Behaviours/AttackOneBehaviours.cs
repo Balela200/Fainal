@@ -22,12 +22,12 @@ public class AttackOneBehaviours : StateMachineBehaviour
     {
         PlayerSystem.playerSystem.canMove = true;
         PlayerSystem.playerSystem.canRoll = true;
+        PlayerSystem.playerSystem.canRun = true;
         PlayerSystem.playerSystem.speed = 3;
 
         // Sword
         PlayerSystem.playerSystem.swordHand.SetActive(false);
         PlayerSystem.playerSystem.swordBody.SetActive(true);
-        //PlayerSystem.playerSystem.attackOneVFX.SetActive(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

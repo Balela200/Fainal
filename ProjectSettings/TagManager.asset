@@ -7,6 +7,15 @@ TagManager:
   - Walk
   - AttackOne
   - Sword
+  - Attack
+  - Enemy
+  - ----- [ UI ] -----
+  - StaminaBar
+  - HealthBar
+  - ShieldBar
+  - LevelBar
+  - levelTextTMP_Text
+  - AnimatorStamina
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class PlayerSystem : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
 
     public bool canMove = true;
+    public bool canRun = true;
 
     [Header("Roll")]
     public float rollSpeed = 10f;
@@ -43,13 +44,9 @@ public class PlayerSystem : MonoBehaviour
     public float timerAttack;
     public GameObject AttackOneBox;
 
-    //[Header("VFX")]
-    //public GameObject attackOneVFX;
-
     [Header("Sword")]
     public GameObject swordHand;
     public GameObject swordBody;
-
     void Start()
     {
         playerSystem = this;
@@ -124,17 +121,25 @@ public class PlayerSystem : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         // Run Walk
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && GameManager.gameManager.stamina > 0 && canRun == true)
         {
             speed = 10;
             characterController.Move(moveDirection * Time.deltaTime * speed);
+
+            PlayerManger.playerManger.Stamina();
+
+            // UI Stamina
+            //PlayerManger.playerManger.staminaGOj.SetActive(true);
+            PlayerManger.playerManger.animatorStamina.SetBool("StaminaOn", true);
         }
         else
         {
             speed = 3;
             characterController.Move(moveDirection * Time.deltaTime * speed);
-        }
 
+            // UI Stamina
+            PlayerManger.playerManger.animatorStamina.SetBool("StaminaOn", false);
+        }
 
         canRollTimer += Time.deltaTime;
         // Roll
@@ -164,6 +169,7 @@ public class PlayerSystem : MonoBehaviour
                 // Apply roll movement
                 anim.SetBool("Roll", true);
                 canMove = false;
+                canRun = false;
                 characterController.Move(rollDirection * rollSpeed * Time.fixedDeltaTime);
 
                 // Attack
@@ -173,6 +179,8 @@ public class PlayerSystem : MonoBehaviour
             {
                 // End rolling
                 canMove = true;
+                canRun = true;
+
                 isRolling = false;
                 anim.SetBool("Roll", false);
 
@@ -195,6 +203,7 @@ public class PlayerSystem : MonoBehaviour
             timerAttack = 0f;
 
             canMove = false;
+            canRun = false;
             canRoll = false;
 
             anim.SetTrigger("Attack");
@@ -213,7 +222,7 @@ public class PlayerSystem : MonoBehaviour
     IEnumerator AttackOne()
     {
         AttackOneBox.SetActive(true);
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         AttackOneBox.SetActive(false);
     }
 
