@@ -43,7 +43,7 @@ public class HealthEnemy : MonoBehaviour
         {
             Destroy(this.gameObject, 0.5f);
 
-            GameManager.gameManager.PlayerXP += Random.Range(10, 11);
+            PlayerManger.PlayerXP += Random.Range(10, 11);
         }
     }
 

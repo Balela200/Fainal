@@ -12,6 +12,8 @@ public class PlayerManger : MonoBehaviour
 
     [Header("Stamina")]
     [SerializeField] private float timerStamina;
+    public static float stamina = 100;
+    public static float maxStamina = 100;
 
     public GameObject staminaGOj;
     Image staminaBar;
@@ -21,10 +23,14 @@ public class PlayerManger : MonoBehaviour
     public Animator animatorStamina;
 
     [Header("Mana")]
-    public float Mana = 100;
-    public float maxMana = 100;
+    public static float Mana = 100;
+    public static float maxMana = 100;
 
     [Header("Level")]
+    public static int levelPlayer = 0;
+    public static float PlayerXP;
+    [SerializeField] public static float maxPlayerXP;
+
     // Bar
     Image levelBar;
     GameObject levelImage;
@@ -34,10 +40,18 @@ public class PlayerManger : MonoBehaviour
     GameObject levelTextTMP_Text;
 
     [Header("Health Player")]
+    public static float Health = 100;
+    public static float maxHealth = 100;
+
+    // Bar
     Image HealthBar;
     GameObject healthBarImage;
 
     [Header("Shield")]
+    public static float shield = 4;
+    public static float maxShield = 4;
+
+    // Bar
     Image ShieldBar;
     GameObject ShieldBarImage;
 
@@ -83,17 +97,17 @@ public class PlayerManger : MonoBehaviour
 
         
         // Bar Stamina
-        staminaBar.fillAmount = GameManager.gameManager.stamina / GameManager.gameManager.maxStamina;
+        staminaBar.fillAmount = stamina / maxStamina;
 
         // Bar Health
-        HealthBar.fillAmount = GameManager.gameManager.Health / GameManager.gameManager.maxHealth;
+        HealthBar.fillAmount = Health / maxHealth;
 
         // Bar Shield
-        ShieldBar.fillAmount = GameManager.gameManager.shield / GameManager.gameManager.maxShield;
+        ShieldBar.fillAmount = shield / maxShield;
 
         // Bar Level
-        levelText.text = GameManager.gameManager.levelPlayer.ToString();
-        levelBar.fillAmount = GameManager.gameManager.PlayerXP / GameManager.gameManager.maxPlayerXP;
+        levelText.text = levelPlayer.ToString();
+        levelBar.fillAmount = PlayerXP / maxPlayerXP;
     }
 
     public void GameManagerOutput()
@@ -108,46 +122,46 @@ public class PlayerManger : MonoBehaviour
         {
             timerStamina = 0;
 
-            GameManager.gameManager.stamina -= 2;
+            stamina -= 2;
         }
     }
 
     public void LevelSystem()
     {
-        if(GameManager.gameManager.PlayerXP >= 500 && GameManager.gameManager.levelPlayer == 0)
+        if(PlayerXP >= 500 && levelPlayer == 0)
         {
-            GameManager.gameManager.PlayerXP = 0;
-            GameManager.gameManager.levelPlayer = 2;
+            PlayerXP = 0;
+            levelPlayer = 2;
         }
-        else if (GameManager.gameManager.PlayerXP >= 1000 && GameManager.gameManager.levelPlayer == 1)
+        else if (PlayerXP >= 1000 && levelPlayer == 1)
         {
-            GameManager.gameManager.PlayerXP = 0;
-            GameManager.gameManager.levelPlayer = 2;
+            PlayerXP = 0;
+            levelPlayer = 2;
         }
-        else if(GameManager.gameManager.PlayerXP >= 2500 && GameManager.gameManager.levelPlayer == 2)
+        else if(PlayerXP >= 2500 && levelPlayer == 2)
         {
-            GameManager.gameManager.PlayerXP = 0;
-            GameManager.gameManager.levelPlayer = 3;
+            PlayerXP = 0;
+            levelPlayer = 3;
         }
     }
 
     void Level()
     {
-        if(GameManager.gameManager.levelPlayer == 0)
+        if(levelPlayer == 0)
         {
-            GameManager.gameManager.maxPlayerXP = 500;
+            maxPlayerXP = 500;
         }
-        else if(GameManager.gameManager.levelPlayer == 1)
+        else if(levelPlayer == 1)
         {
-            GameManager.gameManager.maxPlayerXP = 1500;
+            maxPlayerXP = 1500;
         }
-        else if(GameManager.gameManager.levelPlayer == 2)
+        else if(levelPlayer == 2)
         {
-            GameManager.gameManager.maxPlayerXP = 2500;
+            maxPlayerXP = 2500;
         }
-        else if(GameManager.gameManager.levelPlayer == 3)
+        else if(levelPlayer == 3)
         {
-            GameManager.gameManager.maxPlayerXP = 3500;
+            maxPlayerXP = 3500;
         }
     }
 }

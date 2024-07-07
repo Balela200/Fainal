@@ -120,7 +120,7 @@ public class PlayerSystem : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
 
         // Run Walk
-        if (Input.GetKey(KeyCode.LeftShift) && GameManager.gameManager.stamina > 0 && canRun == true)
+        if (Input.GetKey(KeyCode.LeftShift) && PlayerManger.stamina > 0 && canRun == true)
         {
             speed = 10;
             characterController.Move(moveDirection * Time.deltaTime * speed);

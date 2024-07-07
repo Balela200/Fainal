@@ -32,23 +32,23 @@ public class HealthPlayer : MonoBehaviour
     }
     public HealthPlayer()
     {
-        GameManager.gameManager.Health = GameManager.gameManager.maxHealth;
+        PlayerManger.Health = maxHealth;
 
-        GameManager.gameManager.shield = GameManager.gameManager.maxShield;
+        PlayerManger.shield = PlayerManger.maxShield;
     }
 
     public void Damage(int damageAmont)
     {
-        if(GameManager.gameManager.shield >= 1)
+        if(PlayerManger.shield >= 1)
         {
-            GameManager.gameManager.shield -= damageAmont;
+            PlayerManger.shield -= damageAmont;
         }
-        else if (GameManager.gameManager.shield <= 0)
+        else if (PlayerManger.shield <= 0)
         {
-            GameManager.gameManager.Health -= damageAmont;
-            if (GameManager.gameManager.Health <= 0)
+            PlayerManger.Health -= damageAmont;
+            if (PlayerManger.Health <= 0)
             {
-                GameManager.gameManager.Health = 0;
+                PlayerManger.Health = 0;
             }
         }
     }
@@ -58,11 +58,11 @@ public class HealthPlayer : MonoBehaviour
     {
         if (other.gameObject.tag == "AttackOne")
         {
-            if (GameManager.gameManager.shield >= 1)
+            if (PlayerManger.shield >= 1)
             {
                 Damage(1);
             }
-            else if (GameManager.gameManager.shield <= 0)
+            else if (PlayerManger.shield <= 0)
             {
                 Damage(Random.Range(5, 7));
             }
