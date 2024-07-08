@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 15da1734b90b2774582467c250edf6ad
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Main Camera.prefab.meta
+guid: 212f5bc4283f4d9498857df452d14205
+========
+guid: 55272cd0d3775454cb8d311a23508312
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Main Camera.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

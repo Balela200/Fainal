@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 84917874e7de04f409375ba325f097be
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Capsule.prefab.meta
+guid: 9ccf5ff9345dad4439e42b1b52df41a7
+========
+guid: e3dc6b2093c067647851556b3adea51f
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Capsule.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

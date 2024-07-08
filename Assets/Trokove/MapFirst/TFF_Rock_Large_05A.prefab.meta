@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 45293e68f3549a64fa09c6ecc39ee8db
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/TFF_Rock_Large_05A.prefab.meta
+guid: 0da75e775848abb40953296e401de2ef
+========
+guid: f82cad451adee3f46b32eee5e24b3941
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/TFF_Rock_Large_05A.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
