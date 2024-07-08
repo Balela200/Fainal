@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSystem : MonoBehaviour
 {
@@ -59,6 +60,8 @@ public class PlayerSystem : MonoBehaviour
     {
         Movement(); // Player Movement
         AttackInput();
+
+        MagicInput();
     }
 
     public void Movement()
@@ -192,7 +195,7 @@ public class PlayerSystem : MonoBehaviour
     public void AttackInput()
     {
         timerAttack += Time.deltaTime;
-        if(Input.GetMouseButton(0) && timerAttack >= 1.5f && canAttack == true)
+        if(Input.GetMouseButton(0) && timerAttack >= 1.0f && canAttack == true)
         {
             // Move Player = 0
             speed = 0;
@@ -215,6 +218,11 @@ public class PlayerSystem : MonoBehaviour
             swordHand.SetActive(true);
             swordBody.SetActive(false);
         }
+    }
+
+    public void MagicInput()
+    {
+
     }
 
 
