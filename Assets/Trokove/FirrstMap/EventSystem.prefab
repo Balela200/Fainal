@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+--- !u!1 &3245646278886050695
+========
+--- !u!1 &2303507910496127307
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+  - component: {fileID: 1230402394042112758}
+  - component: {fileID: 2344776170995316836}
+  - component: {fileID: 1639916379034972998}
+========
+  - component: {fileID: 3809413358484701226}
+  - component: {fileID: 1292476092461558159}
+  - component: {fileID: 6437349558822477505}
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+--- !u!4 &1230402394042112758
+========
+--- !u!4 &3809413358484701226
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+  m_GameObject: {fileID: 3245646278886050695}
+========
+  m_GameObject: {fileID: 2303507910496127307}
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+--- !u!114 &2344776170995316836
+========
+--- !u!114 &1292476092461558159
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+  m_GameObject: {fileID: 3245646278886050695}
+========
+  m_GameObject: {fileID: 2303507910496127307}
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+--- !u!114 &1639916379034972998
+========
+--- !u!114 &6437349558822477505
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/EventSystem.prefab
+  m_GameObject: {fileID: 3245646278886050695}
+========
+  m_GameObject: {fileID: 2303507910496127307}
+>>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/EventSystem.prefab
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
