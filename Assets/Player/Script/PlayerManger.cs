@@ -71,6 +71,9 @@ public class PlayerManger : MonoBehaviour
         staminaImage = GameObject.FindGameObjectWithTag("StaminaBar");
         staminaBar = staminaImage.GetComponent<Image>();
 
+        // staminaGOj
+        staminaGOj = GameObject.FindGameObjectWithTag("AnimatorStamina");
+
         // Find Health
         healthBarImage = GameObject.FindGameObjectWithTag("HealthBar");
         HealthBar = healthBarImage.GetComponent<Image>();

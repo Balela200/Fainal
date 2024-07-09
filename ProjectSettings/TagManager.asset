@@ -16,6 +16,9 @@ TagManager:
   - LevelBar
   - levelTextTMP_Text
   - AnimatorStamina
+  - ----- [ Player ] -----
+  - SwordHand
+  - SwordBody
   layers:
   - Default
   - TransparentFX
