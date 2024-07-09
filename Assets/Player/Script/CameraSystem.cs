@@ -10,8 +10,13 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private float smoothTime;
     private Vector3 _currentVelocity = Vector3.zero;
 
+    public GameObject targetPlayerGameObject;
+
     private void Awake()
     {
+        targetPlayerGameObject = GameObject.FindGameObjectWithTag("Player");
+        targetPlayer = targetPlayerGameObject.GetComponent<Transform>();
+
         _offset = transform.position - targetPlayer.position;
     }
 

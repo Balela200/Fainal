@@ -45,6 +45,9 @@ public class PlayerSystem : MonoBehaviour
     public GameObject AttackOneBox;
 
     [Header("Sword")]
+    GameObject swordHandGOJ;
+    GameObject swordBodyGOJ;
+
     public GameObject swordHand;
     public GameObject swordBody;
     void Start()
@@ -53,6 +56,12 @@ public class PlayerSystem : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+
+        //swordHandGOJ = GameObject.Find("SwordHand");
+        //swordHand = GetComponent<GameObject>();
+
+        //swordBodyGOJ = GameObject.FindGameObjectWithTag("SwordBody");
+        //swordBody = GetComponent<GameObject>();
     }
 
     // Update is called once per frame

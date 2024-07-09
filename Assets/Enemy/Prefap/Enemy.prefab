@@ -1818,6 +1818,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5980343978586613113}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44b88460e51defc49b547d00fb0ecfa5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4321838555383184490}
   m_SourcePrefab: {fileID: 100100000, guid: 44b88460e51defc49b547d00fb0ecfa5, type: 3}
 --- !u!1 &993779600887560437 stripped
 GameObject:
@@ -1850,7 +1854,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &7304010751800280044
 CapsuleCollider:
@@ -1872,9 +1876,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
-  m_Height: 1.8
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.92, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &1017860369044398696
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1884,7 +1888,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 993779600887560437}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.7
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1911,3 +1915,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 100
   maxEnemyHealth: 100
+--- !u!114 &4321838555383184490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993779600887560437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d08cb2337d2bd47969dc59d4db9760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  howClose: 15
+  gravity: 9.8
+  attackInterval: 1
+  canAttackEnemy: 1
+  player: {fileID: 0}
