@@ -19,6 +19,12 @@ TagManager:
   - ----- [ Player ] -----
   - SwordHand
   - SwordBody
+  - ----- [ Skil ] -----
+  - StaminaTMP_Text
+  - healthTMP_Text
+  - shieldTMP_Text
+  - manaTMP_Text
+  - levelTMP_Text
   layers:
   - Default
   - TransparentFX

@@ -23,7 +23,7 @@ public class PlayerManger : MonoBehaviour
     public Animator animatorStamina;
 
     [Header("Mana")]
-    public static float Mana = 100;
+    public static float mana = 100;
     public static float maxMana = 100;
 
     [Header("Level")]
@@ -54,6 +54,12 @@ public class PlayerManger : MonoBehaviour
     // Bar
     Image ShieldBar;
     GameObject ShieldBarImage;
+
+    [Header("Point")]
+    public int point = 0;
+
+    [Header("UI")]
+    public GameObject skilUI;
 
 
 
@@ -111,6 +117,13 @@ public class PlayerManger : MonoBehaviour
         // Bar Level
         levelText.text = levelPlayer.ToString();
         levelBar.fillAmount = PlayerXP / maxPlayerXP;
+
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                skilUI.SetActive(true);
+            }
+
     }
 
     public void GameManagerOutput()
