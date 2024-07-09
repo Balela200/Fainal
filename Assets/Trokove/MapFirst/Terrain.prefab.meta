@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Terrain.prefab.meta
-guid: afb4777a0b6f750458abdc34a51fc1d8
-========
-guid: 8d7fc8f148b85664e80ae4eaad0fbe40
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Terrain.prefab.meta
+guid: d865ab7bf9413134599bc20ee2b7b393
 PrefabImporter:
   externalObjects: {}
   userData: 

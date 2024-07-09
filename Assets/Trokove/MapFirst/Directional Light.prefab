@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
---- !u!1 &6726616057130233746
-========
---- !u!1 &8840475540682008225
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+--- !u!1 &2127981386636226504
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,15 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
-  - component: {fileID: 1733063622301745466}
-  - component: {fileID: 4347888935725770452}
-  - component: {fileID: 42186645056183038}
-========
-  - component: {fileID: 1627609553403122821}
-  - component: {fileID: 7522478292464407013}
-  - component: {fileID: 1237387420203696081}
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+  - component: {fileID: 106005025182764935}
+  - component: {fileID: 7198966358152677465}
+  - component: {fileID: 777075605182110732}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -28,21 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
---- !u!4 &1733063622301745466
-========
---- !u!4 &1627609553403122821
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+--- !u!4 &106005025182764935
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
-  m_GameObject: {fileID: 6726616057130233746}
-========
-  m_GameObject: {fileID: 8840475540682008225}
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+  m_GameObject: {fileID: 2127981386636226504}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
@@ -51,26 +33,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
---- !u!108 &4347888935725770452
-========
---- !u!108 &7522478292464407013
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+--- !u!108 &7198966358152677465
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
-  m_GameObject: {fileID: 6726616057130233746}
-========
-  m_GameObject: {fileID: 8840475540682008225}
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+  m_GameObject: {fileID: 2127981386636226504}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.16862746, g: 0.227451, b: 0.5764706, a: 1}
+  m_Color: {r: 0.16470589, g: 0.20784315, b: 0.5411765, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -121,21 +95,13 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
---- !u!114 &42186645056183038
-========
---- !u!114 &1237387420203696081
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+--- !u!114 &777075605182110732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< Updated upstream:Assets/Trokove/MapFirst/Directional Light.prefab
-  m_GameObject: {fileID: 6726616057130233746}
-========
-  m_GameObject: {fileID: 8840475540682008225}
->>>>>>>> Stashed changes:Assets/Trokove/FirrstMap/Directional Light.prefab
+  m_GameObject: {fileID: 2127981386636226504}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
